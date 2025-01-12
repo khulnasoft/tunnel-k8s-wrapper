@@ -1,0 +1,58 @@
+// data.proto
+syntax = "proto3";
+
+package proto_ocs.prototool;
+
+option go_package = "github.com/khulnasoft/tunnel-k8s-wrapper/prototool";
+
+message Identifier {
+  string type = 1;
+  string name = 2;
+  string value = 3;
+  string url = 4;
+}
+
+message KubernetesResource {
+  string namespace = 1;
+  string kind = 2;
+  string name = 3;
+  string container_name = 4;
+  string agent_id = 5;
+}
+
+message Location {
+  KubernetesResource kubernetes_resource = 1;
+  string image = 2;
+  Dependency dependency = 3;
+  string operating_system = 4;
+}
+
+message Dependency {
+  Package package = 1;
+  string version = 2;
+}
+
+message Package {
+  string name = 1;
+}
+
+message Link {
+  string name = 1;
+  string url = 2;
+}
+
+message Vulnerability {
+  string name = 1;
+  string message = 2;
+  string description = 3;
+  string solution =4;
+  string severity = 5;
+  string confidence = 6;
+  repeated Identifier identifiers = 7;
+  Location location = 8;
+  repeated Link links = 9;
+}
+
+message Payload {
+  repeated Vulnerability vulnerabilities= 1;
+}

@@ -1,0 +1,17 @@
+{
+  "ClusterName": "kind-kind",
+  "Resources": [
+    {
+      "Namespace": "kube-system",
+      "Kind": "Pod",
+      "Name": "kube-apiserver-kind-control-plane",
+      "Results": [
+        {
+          "Target": "registry.k8s.io/kube-apiserver:v1.25.3 (debian 11.5)",
+          "Class": "os-pkgs",
+          "Type": "debian"
+        }
+      ]
+    }
+  ]
+}
